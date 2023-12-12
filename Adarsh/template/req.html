@@ -1,0 +1,112 @@
+<!--(c) adarsh-goel-->
+<!--(c) Rishikesh-Sharma09-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:image" content="https://graph.org/file/5e6d18610741226005e6e.jpg" itemprop="thumbnailUrl">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="monetag" content="f3ecc71ccb639ccf66d9d0dee93d3e7a">
+    <title>%s</title>
+    <link rel="stylesheet" type='text/css' href="https://drive----google.com/uc?export=view&id=1pVLG4gZy7jdow3sO-wFS06aP_A9QX0O6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
+
+    <style>
+        marquee {
+            font-size: 20px;
+            font-weight: 800;
+            color: rgb(0, 0, 0);
+            border: 1px solid rgb(22, 22, 22);
+            border-radius: 4px;
+            font-family: 'Poppins';
+        }
+
+        marquee {
+            font-size: 30px;
+            font-weight: 800;
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins';
+        }
+        h4{
+          font-family: 'Poppins'
+        }
+        #view-count{
+          font-size: 14px;
+          color: white;
+          background-color: #7a2fd0;
+          padding: 10px;
+          border-radius: 15px;
+          text-align: center;
+          font-family: 'Poppins'
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <marquee bgcolor="#8a2be2">
+        <div class="toogle"></div>
+        <div id="file-name">
+            %s
+        </div>
+    </marquee>
+</header>
+
+<div class="container">
+    <tag src="%s" class="player"></tag>
+</div>
+
+<footer>
+    <p>
+        <center><h4>Video not playing? Possibly because your browser or the player doesn't support codec. Please download and watch :D</h4></center>
+    </p>
+    <p id="view-count"><strong>Views: 0</strong></p>
+</footer>
+
+<script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
+<script>
+    const controls = [
+        'play-large',
+        'rewind',
+        'play',
+        'fast-forward',
+        'progress',
+        'current-time',
+        'duration',
+        'mute',
+        'volume',
+        'captions',
+        'settings',
+        'pip',
+        'airplay',
+        'download',
+        'fullscreen'
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const player = Plyr.setup('.player', { controls });
+
+        // Increment view count on video play
+        player[0].on('play', () => {
+            incrementViewCount();
+        });
+    });
+
+    const body = document.querySelector('body');
+    const footer = document.querySelector('footer');
+    const toogle = document.querySelector('.toogle');
+    let viewCount = 0;
+
+    function incrementViewCount() {
+        viewCount++;
+        const viewCountElement = document.getElementById('view-count');
+        viewCountElement.innerHTML = `<strong>Views: ${viewCount}</strong>`;
+    }
+</script>
+</body>
+</html>
